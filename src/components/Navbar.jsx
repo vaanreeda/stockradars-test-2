@@ -1,22 +1,15 @@
 import {
    Box,
-   Button,
-   Container,
    Flex,
    HStack,
-   Heading,
    Image,
    Link,
    Spacer,
-   Text,
    Drawer,
    DrawerBody,
-   DrawerFooter,
-   DrawerHeader,
    DrawerOverlay,
    DrawerContent,
    DrawerCloseButton,
-   Input,
    useDisclosure,
 } from "@chakra-ui/react"
 import React from "react"
@@ -33,23 +26,23 @@ const Navbar = () => {
 
       ":hover": {
          textShadow: "1px 1px 5px #fff",
-         color: "#00ff44",
+         color: "primary",
          textDecoration: "none",
       },
    }
 
    return (
-      <Box as="nav" bg="gray.800" color={"white"}>
-         <Flex py={"10px"} pr={"20px"} maxW={{ base: "", md: "4xl", lg: "6xl" }} mx={"auto"} alignItems={"center"}>
-            <Link href="#home">
+      <Box as="nav" bg="gray.800" color={"white"} pos={"fixed"} zIndex={10} top={0} right={0} left={0} boxShadow={"lg"}>
+         <Flex py={"10px"} pr={"20px"} maxW={{ base: "", md: "4xl", lg: "7xl" }} mx={"auto"} alignItems={"center"}>
+            <Link href="/">
                <Image src={LogoImg} alt="logo-img" h="60px" />
             </Link>
             <Spacer />
             <HStack spacing={7} fontSize={"20px"} fontWeight={"light"} display={{ base: "none", md: "flex" }}>
-               <Link href="#home" sx={textHover}>
+               <Link href="/" sx={textHover}>
                   Home
                </Link>
-               <Link href="#register" sx={textHover}>
+               <Link href="/register" sx={textHover}>
                   Register
                </Link>
             </HStack>
@@ -57,10 +50,10 @@ const Navbar = () => {
             <Box ref={btnRef} onClick={onOpen} display={{ base: "block", md: "none" }}>
                <HamburgerIcon boxSize={6} />
             </Box>
-            <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
+            <Drawer isOpen={isOpen} size={"xs"} placement="right" onClose={onClose} finalFocusRef={btnRef}>
                <DrawerOverlay />
-               <DrawerContent>
-                  <DrawerCloseButton />
+               <DrawerContent bg={"gray.800"}>
+                  <DrawerCloseButton color={"white"} />
 
                   <DrawerBody
                      display={"flex"}
@@ -68,7 +61,8 @@ const Navbar = () => {
                      flexDirection={"column"}
                      alignItems={"center"}
                      mt={"3rem"}
-                     gap={"10px"}>
+                     gap={"10px"}
+                     color={"white"}>
                      <Link href="#home" sx={textHover} onClick={onClose}>
                         Home
                      </Link>
